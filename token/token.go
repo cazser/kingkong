@@ -3,7 +3,7 @@ package token
 type TokenType string
 
 type Token struct{
-	Type string
+	Type TokenType
 	Literal string
 }
 
@@ -28,4 +28,6 @@ const (
 	FUNCTION = "FUNCTION"
 	LET    ="LET"
 )
+
+
 
