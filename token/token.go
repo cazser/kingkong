@@ -31,9 +31,14 @@ const (
 	RPAREN = ")"
 	LBRACE ="{"
 	RBRACE = "}"
-
+  //关键字
 	FUNCTION = "FUNCTION"
 	LET    ="LET"
+	TRUE = "TRUE"
+	FALSE = "FALSE"
+	IF    = "IF"
+	ELSE  = "ELSE"
+	RETURN = "RETURN"
 )
 
 
@@ -41,6 +46,11 @@ const (
 var keywords = map[string]TokenType{
 	"fn" : FUNCTION,
 	"let": LET,
+	"true": TRUE,
+	"false" : FALSE,
+	"if": IF,
+	"else" : ELSE,
+	"return": RETURN,
 }
 
 func LookupIdent(ident string) TokenType{
