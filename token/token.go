@@ -13,9 +13,16 @@ const (
 
 	IDENT = "IDENT"
   INT   = "INT"
-
+  //运算符
 	ASSIGN = "="
 	PLUS =   "+"
+  MINUS = "-"
+  BANG  = "!"
+	ASTERISK = "*"
+	SLASH = "/"
+
+	LT = "<"
+	GT = ">"
 
 	COMMA = ","
 	SEMICOLON = ";"
