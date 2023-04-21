@@ -13,7 +13,7 @@ type Parser struct{
 	peekToken token.Token
 }
 
-func New(l *lexer.Lexer) *parser{
+func New(l *lexer.Lexer) *Parser{
  p:= &Parser{l:l}
  p.nextToken();
  p.nextToken();
