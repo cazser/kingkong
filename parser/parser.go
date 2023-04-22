@@ -40,6 +40,8 @@ errors: []string{},
 }
  p.nextToken();
  p.nextToken();
+ p.prefixParseFns = make(map[token.TokenType]prefixParseFn);
+ p.registerPrefix(token.IDENT, p.parseIdentifier)
  return p;
 }
 
@@ -162,4 +164,22 @@ func (p *Parser) parseExpressionStatement() *ast.ExpressionStatement{
 	}
 
 	return stmt;
+}
+
+
+func (p *Parser) parseExpression(precedence int) ast.Expression{
+//version 1
+	prefix:= p.prefixParseFns[p.curToken.Type];
+	if prefix == nil{
+		return nil;
+	}
+
+	leftExp:= prefix();
+
+	return leftExp;
+}
+
+
+func (p *Parser) parseIdentifier() ast.Expression{
+    return &ast.Identifier{Token: p.curToken, Value: p.curToken.Literal}
 }
