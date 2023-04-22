@@ -173,6 +173,7 @@ func (p *Parser) parseExpression(precedence int) ast.Expression{
 //version 1
 	prefix:= p.prefixParseFns[p.curToken.Type];
 	if prefix == nil{
+		p.noPrefixParseError(p.curToken.Type)
 		return nil;
 	}
 
@@ -201,3 +202,11 @@ func (p *Parser) parseIntegerLiteral() ast.Expression{
 
 	return lit;
 }
+
+
+func (p *Parser) noPrefixParseError(t token.TokenType){
+	msg:= fmt.Sprintf("no prefix parse function for %s found", t)
+	p.errors = append(p.errors, msg);
+}
+
+
